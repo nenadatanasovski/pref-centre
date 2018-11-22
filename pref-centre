@@ -450,7 +450,7 @@
                   </div>
                   <div class="action-centre">
                      <div class="buttons">
-                        <input  type="submit" name="commit" value="update" />
+                        <input  class="save-button" type="submit" name="commit" value="update" />
                         <p>
                            <a class="cancel" href="https://www.nrl.com">Cancel</a>
                         </p>

@@ -514,16 +514,16 @@
             </div>
             <div class="social-links">
                <a href="https://www.facebook.com/nrl/" target="_blank">
-               <img class="facebook" alt="amaysim Facebook" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/8c2d7421-4437-4e13-8a78-c9c6fdaf4d99.png">
+               <img class="facebook" alt="amaysim Facebook" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/8c2d7421-4437-4e13-8a78-c9c6fdaf4d99.png" height="20" width="20">
                </a>
                <a href="https://twitter.com/NRL" target="_blank">
-               <img class="twitter" alt="amaysim Twitter" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/a74c0d8a-84cf-4627-8dcb-38fbf1c3af2b.png">
+               <img class="twitter" alt="amaysim Twitter" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/a74c0d8a-84cf-4627-8dcb-38fbf1c3af2b.png" height="20" width="20">
                </a>
                <a href="https://www.instagram.com/nrl/?hl=en" target="_blank">
-               <img class="instagram" alt="amaysim Instagram" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/e37f2bf3-a767-4ae2-8604-931d16f1c68b.png">
+               <img class="instagram" alt="amaysim Instagram" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/e37f2bf3-a767-4ae2-8604-931d16f1c68b.png" height="20" width="20">
                </a>
                <a href="https://www.youtube.com/user/NRL" target="_blank">
-               <img class="youtube" alt="amaysim YouTube" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/b326d442-b6db-44e7-a956-709f46f615a7.png">
+               <img class="youtube" alt="amaysim YouTube" src="http://image.nrl.com/lib/fe90137276650c7f7d/m/1/b326d442-b6db-44e7-a956-709f46f615a7.png" height="20" width="20">
                </a>
             </div>
             <div class="copyright">

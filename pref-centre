@@ -1,3 +1,10 @@
+%%[
+
+SET @qs = queryparameter = ('qs')
+SET @e = queryparameter = ('e')
+
+]%%
+
 <script runat="server">
    Platform.Load("Core", "1");
    var subscriberKey = Attribute.GetValue("_subscriberkey");

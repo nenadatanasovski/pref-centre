@@ -3,16 +3,24 @@
 
    try {
     Platform.Request.GetQueryStringParameter('qs');
-   } catch (e) {
-    Platform.Request.GetQueryStringParameter('e');
-   }
-
    var subscriberKey = Attribute.GetValue("_subscriberkey");
    var subscriberId = Attribute.GetValue("subscriberid");
    var emailAddress = Attribute.GetValue("emailaddr");
    var jid = Attribute.GetValue("jobid");
    var lid = Attribute.GetValue("ListID");
    var bid = Attribute.GetValue("_JobSubscriberBatchID");
+   var environment = 'in';
+   } catch (e) {
+    try { 
+      var encodedemail = Platform.Request.GetQueryStringParameter('e');
+    var decodedemail = Platform.Function.Base64Decode(encodedemail);
+    var environment = 'ex';
+   } catch (e) {
+    var enviroment = 'none';
+   }
+
+   Variable.SetValue("@environment");
+   
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");
    var mySub = {};
@@ -350,7 +358,7 @@
       <div class="content">
          <div class="block-title">
             <h2>
-               Communication Preferences
+               Communication Preferences %%=v(@environment)=%%
             </h2>
          </div>
          <div class="content-wrapper">

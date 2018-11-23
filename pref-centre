@@ -10,7 +10,7 @@ if (qs == null && e == null) {
 
 if (!qs == null) {
   var environment = 'in';
-} elseif (!e == null) {
+} else if (!e == null) {
   var emailencoded = Platform.Function.Base64Decode(e);
   var allSubs = DataExtension.Init("ent._Subscribers");
   try {

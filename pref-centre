@@ -1,6 +1,9 @@
 <script runat="server">
    Platform.Load("Core", "1");
 
+var qs = Platform.Request.GetQueryStringParameter('qs');
+var e = Platform.Request.GetQueryStringParameter('e');
+
    try {
     Platform.Request.GetQueryStringParameter('qs');
    var subscriberKey = Attribute.GetValue("_subscriberkey");
@@ -12,7 +15,7 @@
    var environment = 'in';
    } catch (e) {
     try { 
-      var encodedemail = Platform.Request.GetQueryStringParameter('e');
+    var encodedemail = Platform.Request.GetQueryStringParameter('e');
     var decodedemail = Platform.Function.Base64Decode(encodedemail);
     var environment = 'ex';
    } catch (e) {

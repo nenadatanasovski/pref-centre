@@ -18,6 +18,7 @@
    } catch (e) {
     var enviroment = 'none';
    }
+   }
 
    Variable.SetValue("@environment");
    
@@ -36,7 +37,124 @@
        Platform.Variable.SetValue('@invalid', 'your preferences are updated');
    }
    
-
+   function initialise() {
+       // Get the NRL_subscribers record for this SubscriberKey
+       try {
+           mySub = mySubs.Rows.Lookup(["email_address"], [subscriberKey])[0];
+       } catch (e) {
+           Platform.Variable.SetValue("@invalid", 1);
+       }
+   }
+   
+   function updatePrefs() {
+       try {
+           // Update NRL_subscribers table
+           var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS',
+               'updated_date','status'
+           ];
+   
+           var values = [
+               Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
+               Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",
+               Request.GetFormField('participation') ? Request.GetFormField('participation') : "0",
+               Request.GetFormField('SMS') ? Request.GetFormField('SMS') : "0",
+               Platform.Function.SystemDateToLocalDate(new Date())
+           ];
+   
+           // If Unsub from All Selected add status field to update and execute LogUnsubEvent through API
+           if (Request.GetFormField('unsub_all') == "1") {
+               values.push('Unsubscribed');
+               if (!logUnsub()) {
+                   Platform.Variable.SetValue("@invalid", 1);
+                   return null;
+               }
+           } else {
+               // Get the All Subscribers record for this subscriber. The mailable status needs
+               // retrieving to understand whether we need to resubscribe
+               values.push('Active');
+               if (!resubscribe()) {
+                   Platform.Variable.SetValue("@invalid", 1);
+                   return null;
+               }
+           }
+   
+           var rows = Platform.Function.UpsertData("NRL_subscribers", ["email_address"], [emailAddress], fields, values);
+   
+           if (!rows || rows == 0) {
+               Platform.Variable.SetValue("@invalid", 1);
+               return null;
+           } else {
+               Platform.Variable.SetValue("@statusMessage", "your preferences are updated");
+               return rows;
+           }
+   
+       } catch (e) {
+           Platform.Variable.SetValue("@invalid", 1);
+           return null;
+       }
+   }
+   
+   function resubscribe() {
+       try {
+           var subscriber = {
+               "Status": "Active"
+           };
+           var subObj = Subscriber.Init(subscriberKey);
+           var status = subObj.Update(subscriber);
+           return true;
+       } catch (e) {
+           return false;
+       }
+   }
+   
+   function logUnsub() {
+       // SSJS API Code - long winded. Need to consider new WSProxy for tidier code
+       try {
+           lue = Platform.Function.CreateObject("ExecuteRequest");
+           Platform.Function.SetObjectProperty(lue, "Name", "LogUnsubEvent");
+   
+           lue_prop = Platform.Function.CreateObject("APIProperty");
+           Platform.Function.SetObjectProperty(lue_prop, "Name", "SubscriberKey");
+           Platform.Function.SetObjectProperty(lue_prop, "Value", subscriberKey);
+           Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
+   
+           lue_prop = Platform.Function.CreateObject("APIProperty");
+           Platform.Function.SetObjectProperty(lue_prop, "Name", "JobID");
+           Platform.Function.SetObjectProperty(lue_prop, "Value", jid);
+           Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
+   
+           lue_prop = Platform.Function.CreateObject("APIProperty");
+           Platform.Function.SetObjectProperty(lue_prop, "Name", "ListID");
+           Platform.Function.SetObjectProperty(lue_prop, "Value", lid);
+           Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
+   
+           lue_prop = Platform.Function.CreateObject("APIProperty");
+           Platform.Function.SetObjectProperty(lue_prop, "Name", "BatchID");
+           Platform.Function.SetObjectProperty(lue_prop, "Value", bid);
+           Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
+   
+           lue_prop = Platform.Function.CreateObject("APIProperty");
+           Platform.Function.SetObjectProperty(lue_prop, "Name", "Reason");
+           Platform.Function.SetObjectProperty(lue_prop, "Value", "One-Click Unsubscribe");
+           Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
+   
+           var statusAndRequest = [0, 0];
+   
+           Response = Platform.Function.InvokeExecute(lue, statusAndRequest);
+       } catch (err) {
+           return false;
+       }
+   
+       return true;
+   }
+   
+   function prefChecked(prefName) {
+       if (mySub[prefName]) {
+           return 'checked';
+       } else {
+           return '';
+       }
+   }
 </script>
 <html>
    <head>

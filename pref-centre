@@ -12,13 +12,7 @@ if (!qs == null) {
   var environment = 'in';
 } else if (!e == null) {
   var emailencoded = Platform.Function.Base64Decode(e);
-  var allSubs = DataExtension.Init("ent._Subscribers");
-  try {
-  var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailencoded])[0];
-} catch(e) {
-   var environment = 'none';
-}
-} else {
+ }  else {
   var environment = 'ex';
 }
 

@@ -8,24 +8,28 @@ if (qs == null && e == null) {
   Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
 }
 
-   try {
-    Platform.Request.GetQueryStringParameter('qs');
+if (!qs == null) {
+  var environment = 'in';
+} elseif (!e == null) {
+  var emailencoded = Platform.Function.Base64Decode(e);
+  var allSubs = DataExtension.Init("ent._Subscribers");
+  try {
+  var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailencoded])[0];
+} catch(e) {
+   var environment = 'none';
+}
+} else {
+  var environment = 'ex';
+}
+
+
    var subscriberKey = Attribute.GetValue("_subscriberkey");
    var subscriberId = Attribute.GetValue("subscriberid");
    var emailAddress = Attribute.GetValue("emailaddr");
    var jid = Attribute.GetValue("jobid");
    var lid = Attribute.GetValue("ListID");
    var bid = Attribute.GetValue("_JobSubscriberBatchID");
-   var environment = 'in';
-   } catch (e) {
-    try { 
-    var encodedemail = Platform.Request.GetQueryStringParameter('e');
-    var decodedemail = Platform.Function.Base64Decode(encodedemail);
-    var environment = 'ex';
-   } catch (e) {
-    var enviroment = 'none';
-   }
-   }
+   
 
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@qs",qs);

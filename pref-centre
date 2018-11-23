@@ -16,6 +16,13 @@ if (!qs == null) {
   var environment = 'ex';
 }
 
+var allSubs = DataExtension.Init("ent._Subscribers");
+  try {
+  var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailencoded])[0];
+} catch(e) {
+   var environment = 'none';
+}
+
 
    var subscriberKey = Attribute.GetValue("_subscriberkey");
    var subscriberId = Attribute.GetValue("subscriberid");

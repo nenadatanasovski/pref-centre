@@ -28,6 +28,8 @@ if (qs.length < 1 && e.length < 1) {
    }
 
    Variable.SetValue("@environment",environment);
+   Variable.SetValue("@qs",qs);
+   Variable.SetValue("@e",e);
    
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");

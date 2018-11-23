@@ -4,6 +4,10 @@
 var qs = Platform.Request.GetQueryStringParameter('qs');
 var e = Platform.Request.GetQueryStringParameter('e');
 
+if (qs.length < 1 && e.length < 1) {
+  redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+}
+
    try {
     Platform.Request.GetQueryStringParameter('qs');
    var subscriberKey = Attribute.GetValue("_subscriberkey");

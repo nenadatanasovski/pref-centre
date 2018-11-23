@@ -5,7 +5,7 @@ var qs = Platform.Request.GetQueryStringParameter('qs');
 var e = Platform.Request.GetQueryStringParameter('e');
 
 if (qs.length < 1 && e.length < 1) {
-  Platform.Function.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+  Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
 }
 
    try {

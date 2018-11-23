@@ -20,7 +20,7 @@
    }
    }
 
-   Variable.SetValue("@environment");
+   Variable.SetValue("@environment",environment);
    
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");

@@ -38,7 +38,7 @@ var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['Email
 }
 
    Platform.Variable.SetValue("@addSub",addSub);
-   Platform.Variable.SetValue("@subCount", allSubsRows.length)
+   Platform.Variable.SetValue("@subCount", allSubRows.length)
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@e",emailAddress);
    

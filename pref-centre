@@ -34,13 +34,18 @@ var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['Email
   if (allSubRows.length > 0) {
    var addSub = 0;
 } else {
-   var addSub = 1;
+   var addSubscriber = Platform.Function.CreateObject("Subscriber");
+   Platform.Function.SetObjectProperty(addSubscriber, "emailAddress", emailAddress);
+   Platform.Function.SetObjectProperty(addSubscriber, "SubscriberKey", emailAddress);
+   var statusAndRequest1 = [0, 0];
+   Response = Platform.Function.InvokeExecute(addSubscriber, statusAndRequest1);
 }
 
    Platform.Variable.SetValue("@addSub",addSub);
    Platform.Variable.SetValue("@subCount", allSubRows.length)
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@e",emailAddress);
+   Platform.Variable.SetValue("@hash",e);
    
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");
@@ -175,59 +180,8 @@ var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['Email
            return '';
        }
    }
+
 </script>
-%%[ IF @addSub == 1 OR @addSub == '1' THEN 
-SET @username = Lookup('API_User_Creds','username','field','1')
-SET @password = Lookup('API_User_Creds','password','field','1')
-SET @addSubXML = TreatAsContent('<?xml version="1.0" encoding="UTF-8"?>
-<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
-    <s:Header>
-        <a:Action s:mustUnderstand="1">Create</a:Action>
-        <a:MessageID>urn:uuid:7e0cca04-57bd-4481-864c-6ea8039d2ea0</a:MessageID>
-        <a:ReplyTo>
-            <a:Address>http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous</a:Address>
-        </a:ReplyTo>
-        <a:To s:mustUnderstand="1">https://mc4p0kyjfd-l1cfksf6050lvhg7m.soap.marketingcloudapis.com/Service.asmx</a:To>
-        <o:Security xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" s:mustUnderstand="1">
-            <o:UsernameToken>
-                <o:Username>%%=v(@username)=%%</o:Username>
-                <o:Password><![CDATA[%%=v(@password)=%%]]></o:Password>
-            </o:UsernameToken>
-        </o:Security>
-    </s:Header>
-    <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-        <CreateRequest xmlns="http://exacttarget.com/wsdl/partnerAPI">
-            <Options>
-                <SaveOptions>
-                    <SaveOption>
-                        <PropertyName>*</PropertyName>
-                        <SaveAction>UpdateAdd</SaveAction>
-                    </SaveOption>
-                </SaveOptions>
-                <!--
-                <RequestType>Asynchronous</RequestType>
-                <QueuePriority>High</QueuePriority>
-                <SendResponseTo>
-                    <ResponseType>email</ResponseType>
-                    <ResponseAddress>%%=v(@e)=%%</ResponseAddress>
-                    <RespondWhen>OnCallComplete</RespondWhen>
-                    <IncludeResults>true</IncludeResults>
-                    <IncludeObjects>true</IncludeObjects>
-  		        </SendResponseTo>
-                -->
-            </Options>
-            <Objects xsi:type="Subscriber">
-                <!--
-                  <Client><ID>1084813</ID>
-                  </Client>
-                -->
-                <SubscriberKey>%%=v(@e)=%%</SubscriberKey>
-                <EmailAddress>%%=v(@e)=%%</EmailAddress>
-            </Objects>
-        </CreateRequest>
-    </s:Body>
-</s:Envelope>') ]%%%%=v(@addSubXML)=%%
-%%[ ENDIF ]%%
 <html>
    <head>
       <title>NRL Preference Centre</title>

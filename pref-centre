@@ -33,15 +33,43 @@ var allSubs = DataExtension.Init("ent._Subscribers");
   try {
   var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailAddress])[0];
 } catch(e) {
-   var environment = 'none';
+   public void testAddSubscriber() throws RemoteException {
+
+       try{
+           Soap stub = init();
+
+            Subscriber subscriber = new Subscriber();
+
+            subscriber.setEmailAddress(emailAddress);
+            subscriber.setSubscriberKey(subscriber.getEmailAddress()); // unique identifier
+            subscriber.setStatus(SubscriberStatus.ACTIVE);
+
+              Attribute a1 = new Attribute();
+              a1.setName("");
+              a1.setValue("");
+
+              Attribute[] AttributeLists = {a1};
+              subscriber.getAttributes().addAll(Arrays.asList(AttributeLists));
+
+              APIObject[] apiObjects = {subscriber};
+
+              CreateRequest createRequest = new CreateRequest();
+             createRequest.setOptions(new CreateOptions());
+              createRequest.getObjects().addAll(Arrays.asList(apiObjects));
+
+              CreateResponse createResponse = stub.create(createRequest);
+              System.out.println("Subscriber created in list ::: " + createResponse.getOverallStatus());
+
+             } catch (Exception e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+
+        }
+    }
 }
 
 
    Platform.Variable.SetValue("@environment",environment);
-   Platform.Variable.SetValue("@qs",qs);
    Platform.Variable.SetValue("@e",emailAddress);
-   Platform.Variable.SetValue("@qslength", qs.length);
-   Platform.Variable.SetValue("@elength", e.length);
    
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");

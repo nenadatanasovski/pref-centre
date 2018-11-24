@@ -427,7 +427,11 @@ var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'
       <div class="content">
          <div class="block-title">
             <h2>
-               Communication Preferences %%=v(@environment)=%% %%=v(@qs)=%% %%=v(@e)=%% %%=v(@addSub)=%% %%=v(@subCount)=%%
+               Communication Preferences <br>
+               environment: %%=v(@environment)=%% <br>
+               email: %%=v(@e)=%% <br>
+               addSub: %%=v(@addSub)=%% <br>
+               subCount: %%=v(@subCount)=%% <br>
             </h2>
          </div>
          <div class="content-wrapper">

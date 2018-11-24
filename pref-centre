@@ -34,7 +34,7 @@ var allSubs = DataExtension.Init("ent._Subscribers");
   var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailAddress])[0];
 } catch(e) {
    
-   Platform.Variable.SetValue("@addSub",1);;
+   Platform.Variable.SetValue("@addSub",1);
 
 }
 

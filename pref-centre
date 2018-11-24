@@ -37,8 +37,8 @@ var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['Email
    var addSubscriber = Platform.Function.CreateObject("Subscriber");
    Platform.Function.SetObjectProperty(addSubscriber, "emailAddress", emailAddress);
    Platform.Function.SetObjectProperty(addSubscriber, "SubscriberKey", emailAddress);
-   var statusAndRequest1 = [0, 0];
-   Response = Platform.Function.InvokeCreate(addSubscriber, statusAndRequest1);
+   var statusAndRequestID = [0, 0];
+   Response = Platform.Function.InvokeCreate(addSubscriber, statusAndRequestID, Options);
 }
 
    Platform.Variable.SetValue("@addSub",addSub);

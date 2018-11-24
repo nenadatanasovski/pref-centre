@@ -29,7 +29,7 @@ if (!qs == null) {
   var environment = 'manualRedirect';
  }  
 
-var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'],[emailAddress]);
+var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['EmailAddress'],[emailAddress]);
   if (allSubsRows.length > 0) {
    var addSub = 0;
 } else {

@@ -477,7 +477,7 @@
                                        <tr>
                                           <td>
                                              <div class="form-item form-type-option">
-                                                <input type="checkbox" class="" id="unsub_all" name="unsub_all" value="1" %%=v(@unsub_all_check)=%%
+                                                <input type="checkbox" class="" id="Unsubscribed" name="Unsubscribed" value="1"
                                                 <ctrl:eval>prefChecked('Unsubscribed')</ctrl:eval>
                                                 >
                                                 <label for="unsub_all">Unsubscribe from all email marketing communications</label>

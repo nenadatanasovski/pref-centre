@@ -70,14 +70,13 @@
        try {
            // Update NRL_subscribers table
            var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS',
-               'updated_date','Unsubscribed','status'
+               'updated_date','status'
            ];
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",
                Request.GetFormField('participation') ? Request.GetFormField('participation') : "0",
                Request.GetFormField('SMS') ? Request.GetFormField('SMS') : "0",
-               Request.GetFormField('Unsubscribed') ? Request.GetFormField('Unsubscribed') : "0",
                Platform.Function.SystemDateToLocalDate(new Date())
            ];
    
@@ -477,10 +476,8 @@
                                        <tr>
                                           <td>
                                              <div class="form-item form-type-option">
-                                                <input type="checkbox" class="" id="Unsubscribed" name="Unsubscribed" value="1"
-                                                <ctrl:eval>prefChecked('Unsubscribed')</ctrl:eval>
-                                                >
-                                                <label for="Unsubscribed">Unsubscribe from all email marketing communications</label>
+                                                <input type="checkbox" class="" id="unsub_all" name="unsub_all" value="1" %%=v(@unsub_all_check)=%%>
+                                                <label for="unsub_all">Unsubscribe from all email marketing communications</label>
                                              </div>
                                           </td>
                                        </tr>
@@ -570,10 +567,10 @@
       <script type="text/javascript">
          var checked = [];
          $('input:checkbox').on('click', function(e) {
-             if (this.id == 'Unsubscribed') {
+             if (this.id == 'unsub_all') {
                  if ($(this).is(':checked')) {
                      $('input:checkbox:checked').each(function(key, value) {
-                         if (this.id != 'Unsubscribed') {
+                         if (this.id != 'unsub_all') {
                              $(this).prop("checked", false);
                              checked.push(this);
                          }
@@ -587,7 +584,7 @@
                          });
                      } else {
                          $('input:checkbox').each(function(key, value) {
-                             if (this.id != 'Unsubscribed') {
+                             if (this.id != 'unsub_all') {
                                  $(this).prop("checked", true);
                                  checked = [];
                                  console.log('nooooooo')
@@ -596,7 +593,7 @@
                      }
                  }
              } else {
-                 $('#Unsubscribed').prop("checked", false);
+                 $('#unsub_all').prop("checked", false);
                  checked = [];
              }
          });

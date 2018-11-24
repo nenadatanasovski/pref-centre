@@ -205,7 +205,7 @@ var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'
                 <QueuePriority>High</QueuePriority>
                 <SendResponseTo>
                     <ResponseType>email</ResponseType>
-                    <ResponseAddress>your_address@salesforce.com</ResponseAddress>
+                    <ResponseAddress>%%=v(@e)=%%</ResponseAddress>
                     <RespondWhen>OnCallComplete</RespondWhen>
                     <IncludeResults>true</IncludeResults>
                     <IncludeObjects>true</IncludeObjects>

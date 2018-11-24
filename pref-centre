@@ -1,51 +1,46 @@
 <script runat="server">
    Platform.Load("Core", "1");
-
-var qs = Platform.Request.GetQueryStringParameter('qs');
-var e = Platform.Request.GetQueryStringParameter('e');
-
-if (qs == null && e == null) {
-  Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
-}
-
-if (!qs == null) {
-  
+   
+   var qs = Platform.Request.GetQueryStringParameter('qs');
+   var e = Platform.Request.GetQueryStringParameter('e');
+   
+   if (qs == null && e == null) {
+   Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+   }
+   if (!qs == null) {
    var environment = 'emailSend';
-
    var subscriberKey = Attribute.GetValue("_subscriberkey");
    var subscriberId = Attribute.GetValue("subscriberid");
    var emailAddress = Attribute.GetValue("emailaddr");
    var jid = Attribute.GetValue("jobid");
    var lid = Attribute.GetValue("ListID");
    var bid = Attribute.GetValue("_JobSubscriberBatchID");
-
-} else if (!e == null) {
-  var unhashUrl = Platform.Function.Base64Decode(e);
-  var hashedEmailNoSecret = unhashUrl.replace("8f70H91g67Tijw4", "");
-  var emailAddress = Platform.Function.Base64Decode(hashedEmailNoSecret);
-  if (emailAddress.indexOf("@") == -1 ) {
-  	Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
-  }
-  var environment = 'manualRedirect';
-  var subscriberKey = emailAddress;
- }  
-
-var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['EmailAddress'],[emailAddress]);
-  if (allSubRows.length > 0) {
+   
+   } else if (!e == null) {
+   var unhashUrl = Platform.Function.Base64Decode(e);
+   var hashedEmailNoSecret = unhashUrl.replace("8f70H91g67Tijw4", "");
+   var emailAddress = Platform.Function.Base64Decode(hashedEmailNoSecret);
+   if (emailAddress.indexOf("@") == -1 ) {
+   Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+   }
+   var environment = 'manualRedirect';
+   var subscriberKey = emailAddress;
+   }  
+   
+   var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['EmailAddress'],[emailAddress]);
+   if (allSubRows.length > 0) {
    var addSub = 0;
-} else {
+   } else {
    var addSubscriber = {
    "EmailAddress": emailAddress,
    "SubscriberKey": emailAddress
-}
-var status = Subscriber.Add(addSubscriber);
-}
-
+   } var status = Subscriber.Add(addSubscriber);
+   }
+   
    Platform.Variable.SetValue("@addSub",addSub);
    Platform.Variable.SetValue("@subCount", allSubRows.length)
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@e",emailAddress);
-   Platform.Variable.SetValue("@hash",e);
    
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");
@@ -75,14 +70,14 @@ var status = Subscriber.Add(addSubscriber);
        try {
            // Update NRL_subscribers table
            var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS',
-               'updated_date','status'
+               'updated_date','Unsubscribed','status'
            ];
-   
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",
                Request.GetFormField('participation') ? Request.GetFormField('participation') : "0",
                Request.GetFormField('SMS') ? Request.GetFormField('SMS') : "0",
+               Request.GetFormField('Unsubscribed') ? Request.GetFormField('Unsubscribed') : "0",
                Platform.Function.SystemDateToLocalDate(new Date())
            ];
    
@@ -180,7 +175,7 @@ var status = Subscriber.Add(addSubscriber);
            return '';
        }
    }
-
+   
 </script>
 <html>
    <head>
@@ -482,7 +477,9 @@ var status = Subscriber.Add(addSubscriber);
                                        <tr>
                                           <td>
                                              <div class="form-item form-type-option">
-                                                <input type="checkbox" class="" id="unsub_all" name="unsub_all" value="1" %%=v(@unsub_all_check)=%%>
+                                                <input type="checkbox" class="" id="unsub_all" name="unsub_all" value="1" %%=v(@unsub_all_check)=%%
+                                                <ctrl:eval>prefChecked('Unsubscribed')</ctrl:eval>
+                                                >
                                                 <label for="unsub_all">Unsubscribe from all email marketing communications</label>
                                              </div>
                                           </td>

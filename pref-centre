@@ -29,15 +29,14 @@ if (!qs == null) {
   var environment = 'manualRedirect';
  }  
 
-var allSubs = DataExtension.Init("ent._Subscribers");
-  try {
-  var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailAddress])[0];
-} catch(e) {
-   
-   Platform.Variable.SetValue("@addSub",1);
-
+var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'],[emailAddress]);
+  if (allSubsRows.length > 0) {
+   var addSub = 0;
+} else {
+   var addSub = 1;
 }
 
+   Platform.Variable.SetValue("@addSub",addSub);
 
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@e",emailAddress);

@@ -39,7 +39,7 @@ var allSubs = DataExtension.Init("ent._Subscribers");
 
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@qs",qs);
-   Platform.Variable.SetValue("@e",e);
+   Platform.Variable.SetValue("@e",emailAddress);
    Platform.Variable.SetValue("@qslength", qs.length);
    Platform.Variable.SetValue("@elength", e.length);
    

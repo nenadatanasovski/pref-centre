@@ -570,10 +570,10 @@
       <script type="text/javascript">
          var checked = [];
          $('input:checkbox').on('click', function(e) {
-             if (this.id == 'unsub_all') {
+             if (this.id == 'Unsubscribed') {
                  if ($(this).is(':checked')) {
                      $('input:checkbox:checked').each(function(key, value) {
-                         if (this.id != 'unsub_all') {
+                         if (this.id != 'Unsubscribed') {
                              $(this).prop("checked", false);
                              checked.push(this);
                          }
@@ -587,7 +587,7 @@
                          });
                      } else {
                          $('input:checkbox').each(function(key, value) {
-                             if (this.id != 'unsub_all') {
+                             if (this.id != 'Unsubscribed') {
                                  $(this).prop("checked", true);
                                  checked = [];
                                  console.log('nooooooo')
@@ -596,7 +596,7 @@
                      }
                  }
              } else {
-                 $('#unsub_all').prop("checked", false);
+                 $('#Unsubscribed').prop("checked", false);
                  checked = [];
              }
          });

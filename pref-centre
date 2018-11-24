@@ -175,7 +175,7 @@ var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'
        }
    }
 </script>
-%%[ IF @addSub == 1 THEN ]%% <?xml version="1.0" encoding="utf-8"?>
+%%[ IF @addSub == 1 THEN ]%% <!--<?xml version="1.0" encoding="utf-8"?>
 <s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
     <s:Header>
         <a:Action s:mustUnderstand="1">Create</a:Action>
@@ -209,7 +209,7 @@ var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'
             </Objects>
         </CreateRequest>
     </s:Body>
-</s:Envelope>
+</s:Envelope> -->
 %%[ ENDIF ]%%
 <html>
    <head>

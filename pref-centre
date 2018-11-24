@@ -27,6 +27,7 @@ if (!qs == null) {
   	Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
   }
   var environment = 'manualRedirect';
+  var subscriberKey = emailAddress;
  }  
 
 var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['EmailAddress'],[emailAddress]);

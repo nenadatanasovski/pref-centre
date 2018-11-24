@@ -37,7 +37,7 @@ var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'
 }
 
    Platform.Variable.SetValue("@addSub",addSub);
-
+   Platform.Variable.SetValue("@subCount", allSubsRows.length)
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@e",emailAddress);
    
@@ -427,7 +427,7 @@ var allSubRows = Platform.Function.LookupRows('ent._Subscribers',['EmailAddress'
       <div class="content">
          <div class="block-title">
             <h2>
-               Communication Preferences %%=v(@environment)=%% %%=v(@qs)=%% %%=v(@e)=%% %%=v(@addSub)=%%
+               Communication Preferences %%=v(@environment)=%% %%=v(@qs)=%% %%=v(@e)=%% %%=v(@addSub)=%% %=v(@subCount)=%%
             </h2>
          </div>
          <div class="content-wrapper">

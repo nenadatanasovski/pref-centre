@@ -9,20 +9,8 @@ if (qs == null && e == null) {
 }
 
 if (!qs == null) {
-  var environment = 'in';
-} else if (!e == null) {
-  var emailencoded = Platform.Function.Base64Decode(e);
- }  else {
-  var environment = 'ex';
-}
-
-var allSubs = DataExtension.Init("ent._Subscribers");
-  try {
-  var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailencoded])[0];
-} catch(e) {
-   var environment = 'none';
-}
-
+  
+   var environment = 'emailSend';
 
    var subscriberKey = Attribute.GetValue("_subscriberkey");
    var subscriberId = Attribute.GetValue("subscriberid");
@@ -30,7 +18,24 @@ var allSubs = DataExtension.Init("ent._Subscribers");
    var jid = Attribute.GetValue("jobid");
    var lid = Attribute.GetValue("ListID");
    var bid = Attribute.GetValue("_JobSubscriberBatchID");
-   
+
+} else if (!e == null) {
+  var unhashUrl = Platform.Function.Base64Decode(e);
+  var hashedEmailNoSecret = unhashUrl.replace("8f70H91g67Tijw4", "");
+  var emailAddress = Platform.Function.Base64Decode(hashedEmailNoSecret);
+  if (emailAddress.indexOf("@") == -1 ) {
+  	Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+  }
+  var environment = 'manualRedirect';
+ }  
+
+var allSubs = DataExtension.Init("ent._Subscribers");
+  try {
+  var allSub = allSubs.Rows.Lookup(["EmailAddress"], [emailAddress])[0];
+} catch(e) {
+   var environment = 'none';
+}
+
 
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@qs",qs);

@@ -448,9 +448,15 @@
                                     </table>
                                  </tr>
                               </table>
+                              <table>
+                              	<tr>
+                              		<td>
                               <p class="explainer">Unsubscribe from all email and SMS subscriptions.</p>
                               <div class="options">
                               </div>
+                              <td>
+                              <tr>
+                          </table>
                               <table>
                                  <tr>
                                     <table>

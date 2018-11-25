@@ -55,7 +55,7 @@
    
    function updatePrefs() {
        try {
-           var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS','updated_date','Unsubscribed','status'];
+           var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS','Unsubscribed','updated_date','status'];
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",

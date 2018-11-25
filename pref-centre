@@ -20,7 +20,8 @@
 	   var emailAddress = Platform.Function.Base64Decode(hashedEmailNoSecret);
 	   if (emailAddress.indexOf("@") == -1 ) { Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq'); }
 	   var environment = 'manualRedirect';
-	   var subscriberKey = emailAddress; }  
+	   var subscriberKey = emailAddress;
+   }  
    
    var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['EmailAddress'],[emailAddress]);
    if (allSubRows.length > 0) { var addSub = 0;
@@ -36,12 +37,15 @@
    function initialise() {
        // Get the NRL_subscribers record for this SubscriberKey
        try { mySub = mySubs.Rows.Lookup(["email_address"], [subscriberKey])[0];
-       } catch (e) { Platform.Variable.SetValue("@invalid", 1); }}
+       } catch (e) {
+           Platform.Variable.SetValue("@invalid", 1); }}
    
    function updatePrefs() {
        try {
            // Update NRL_subscribers table
-           var fields = [ 'newsletter', 'nrl_partners', 'participation', 'SMS','updated_date','status' ];
+           var fields = [ 'newsletter', 'nrl_partners', 'participation', 'SMS',
+               'updated_date','status' ];
+   
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",
@@ -54,14 +58,17 @@
                values.push('Unsubscribed');
                if (!logUnsub()) {
                    Platform.Variable.SetValue("@invalid", 1);
-                   return null; }
+                   return null;
+               }
            } else {
                // Get the All Subscribers record for this subscriber. The mailable status needs
                // retrieving to understand whether we need to resubscribe
                values.push('Active');
                if (!resubscribe()) {
                    Platform.Variable.SetValue("@invalid", 1);
-                   return null; }}
+                   return null;
+               }
+           }
    
            var rows = Platform.Function.UpsertData("NRL_subscribers", ["email_address"], [emailAddress], fields, values);
    
@@ -70,11 +77,12 @@
                return null;
            } else {
                Platform.Variable.SetValue("@statusMessage", "your preferences are updated");
-               return rows; }
+               return rows;
+           }
    
-       } catch (e) { 
-       	   Platform.Variable.SetValue("@invalid", 1);
-           return null; }}
+       } catch (e) { Platform.Variable.SetValue("@invalid", 1);
+           return null;}
+   }
    
    function resubscribe() {
        try { var subscriber = { "Status": "Active" };
@@ -84,6 +92,7 @@
        } catch (e) { return false; }}
    
    function logUnsub() {
+       // SSJS API Code - long winded. Need to consider new WSProxy for tidier code
        try {
            lue = Platform.Function.CreateObject("ExecuteRequest");
            Platform.Function.SetObjectProperty(lue, "Name", "LogUnsubEvent");

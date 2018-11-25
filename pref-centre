@@ -362,7 +362,30 @@
       color: #888;
       margin-top: 1rem;
       }
-      body>footer .home-link {
+      body>footer {
+    font-size: 15px;
+    font-weight: normal;
+    letter-spacing: -0.6px;
+    line-height: 1.333333;
+    border-top: 0.125rem solid rgba(135, 116, 138, 0.08);
+    padding: 2rem
+}
+
+body>footer .app-links img {
+    vertical-align: top
+}
+
+body>footer .app-links img.android {
+    height: 1.0625rem
+}
+
+body>footer .app-links img.apple {
+    height: 1rem
+}
+
+body>footer .app-links,
+body>footer .help-link,
+body>footer .home-link {
     float: left;
     margin-right: 1.25rem
 }

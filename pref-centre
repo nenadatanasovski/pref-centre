@@ -188,6 +188,15 @@
       font-weight: 700;
       font-size: calc(1.125rem + 6 * (100vw - 320px) / 1280);
       }
+      h3 {
+      padding-top: 10px;
+      text-transform: uppercase;
+      color : #222222;
+      letter-spacing :2px;
+      font-weight: 700;
+      font-size: calc(1.125rem + 6 * (100vw - 320px) / 1280);
+      text-align: center;
+      }
       label {
       font-weight: 600;
       line-height: 1.5;
@@ -376,9 +385,7 @@
             <table>
                <tr>
                   <td>
-                           <center>
-                           <h2>Updated preferences for <b>%%=v(@e)=%%</b></h2>
-                           </center>
+                           <h3>Updated preferences for <b>%%=v(@e)=%%</b></h3>
                   </td>
                </tr>
             </table>

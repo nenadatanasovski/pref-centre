@@ -453,7 +453,7 @@
                               <table>
                                  <tr>
                                     <td>
-                                       <p class="explainer">Unsubscribe from all email and SMS subscriptions.</p>
+                                       <p class="explainer">Unsubscribe from all email and SMS subscriptions for email address: <b>%%=v(@e)=%%</b>.</p>
                                        <div class="options">
                                        </div>
                                     <td>
@@ -490,7 +490,7 @@
                   %%[if not empty(@statusMessage) then ]%%
                   <div class="form-row" style="margin-top: 10px">
                      <div class="message success">
-                        <p>Your preferences have been successfully updated.</p>
+                        <p>Your preferences have been successfully updated for email address: <b>%%=v(@e)=%%</b>.</p>
                      </div>
                   </div>
                   %%[endif]%%

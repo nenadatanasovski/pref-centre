@@ -361,6 +361,7 @@
                Communication Preferences <br>
                environment: %%=v(@environment)=%% <br>
                email: %%=v(@e)=%% <br>
+               statusMessage: %%=v(@statusMessage)=%%
             </h2>
          </div>
          <div class="content-wrapper">

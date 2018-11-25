@@ -604,7 +604,6 @@
             </div>
          </div>
       </div>
-      <center>
          <footer>
             <div class="home-link">
                <a class="no-style" href="https://www.nrl.com.au/">Home</a>
@@ -635,7 +634,6 @@
                <small>&copy; Copyright %%xtyear%% National Rugby League</small>
             </div>
          </footer>
-      </center>
       <script type="text/javascript">
          var checked = [];
          $('input:checkbox').on('click', function(e) {

@@ -369,22 +369,20 @@
                <tr>
                   <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
                   <td class="name-cell">
-                  	<h2>NRL</h2>
+                     <h2>NRL</h2>
                   </td>
                </tr>
             </table>
             <table>
-            	<tr>
-            		<td>
-            			%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
-                  	<div class="form-row" style="margin-top: 10px">
-                     <div class="message success">
-                     <center><h2>Updated preferences for <b>%%=v(@e)=%%</b></h2><center>
-                     </div>
-                     </div>
+               <tr>
+                  <td>
+                     %%[ IF NOT EMPTY(@statusMessage) THEN ]%%
+                           <center>
+                           <h2>Updated preferences for <b>%%=v(@e)=%%</b></h2>
+                           <center>
                      %%[ ENDIF ]%%
-            		</td>
-            	</tr>
+                  </td>
+               </tr>
             </table>
             <br><br>
             <p class="explainer">Select the content you would like to subscribe to.</p>
@@ -507,9 +505,9 @@
             <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%=v(@e)=%%">
             <div class="form-row">
             <label class="form-label" for="mobile_number">
-            	We could not update your preferences due to a system error. <br>
-            	Our developer team has been notified and are looking into the issue. <br>
-            	Please try again at a later time.</label>
+            We could not update your preferences due to a system error. <br>
+            Our developer team has been notified and are looking into the issue. <br>
+            Please try again at a later time.</label>
             </div>
             </form>
             %%[ endif ]%%

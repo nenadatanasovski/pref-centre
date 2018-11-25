@@ -382,13 +382,9 @@
          </div>
          <div class="content-wrapper">
          	%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
-            <table>
-               <tr>
-                  <td>
+            <div class="action-centre">
                            <h3>Updated preferences for <b>%%=v(@e)=%%</b></h3>
-                  </td>
-               </tr>
-            </table>
+            </div>
                 %%[ ENDIF ]%%
             <br>
             <p class="explainer">Select the content you would like to subscribe to.</p>

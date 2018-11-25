@@ -363,11 +363,9 @@
       margin-top: 1rem;
       }
       footer {
-      padding-right: 2px;
-      padding-left: 2px;	
-	  bottom: 0;
-
-	  position: absolute;
+      padding-right: 5px;
+      padding-left: 5px;
+      padding-bottom: 5px;	
 	  width: 100%
 	  }
       footer .app-links img {

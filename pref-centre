@@ -358,7 +358,7 @@
       <div class="content">
          <div class="block-title">
             <h2>
-               Communication Preferences <br>
+               NRL Email and SMS Subscription Preferences <br>
                environment: %%=v(@environment)=%% <br>
                email: %%=v(@e)=%% <br>
                statusMessage: %%=v(@statusMessage)=%%

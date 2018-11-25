@@ -363,8 +363,10 @@
       margin-top: 1rem;
       }
       footer {
+      padding-right: 2px;
+      padding-left: 2px;	
 	  bottom: 0;
-	  height: 16.875rem;
+
 	  position: absolute;
 	  width: 100%
 	  }

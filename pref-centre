@@ -4,7 +4,9 @@
    var qs = Platform.Request.GetQueryStringParameter('qs');
    var e = Platform.Request.GetQueryStringParameter('e');
    
-   if (qs == null && e == null) { Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq'); }
+   if (qs == null && e == null) {
+   Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+   }
    
    if (!qs == null) {
 	   var environment = 'emailSend';
@@ -18,40 +20,62 @@
 	   var unhashUrl = Platform.Function.Base64Decode(e);
 	   var hashedEmailNoSecret = unhashUrl.replace("8f70H91g67Tijw4", "");
 	   var emailAddress = Platform.Function.Base64Decode(hashedEmailNoSecret);
-	   if (emailAddress.indexOf("@") == -1 ) { Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq'); }
+	   if (emailAddress.indexOf("@") == -1 ) {
+	   		Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
+	   }
 	   var environment = 'manualRedirect';
 	   var subscriberKey = emailAddress;
    }  
    
    var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['EmailAddress'],[emailAddress]);
-   if (allSubRows.length > 0) { var addSub = 0;
-   } else { var addSubscriber = { "EmailAddress": emailAddress, "SubscriberKey": emailAddress } var status = Subscriber.Add(addSubscriber); }
+   if (allSubRows.length > 0) {
+   		var addSub = 0;
+   } else {
+	   var addSubscriber = {
+	   "EmailAddress": emailAddress,
+	   "SubscriberKey": emailAddress
+   }
+   var status = Subscriber.Add(addSubscriber);
+   }
    
+   Platform.Variable.SetValue("@addSub",addSub);
+   Platform.Variable.SetValue("@subCount", allSubRows.length)
+   Platform.Variable.SetValue("@environment",environment);
+   Platform.Variable.SetValue("@e",emailAddress);
+   Platform.Variable.SetValue("@hash",e);
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");
    var mySub = {};
    
    if (method == 'GET') { initialise(); } else if (method == 'POST') { if (updatePrefs() > 0) { initialise(); }
-   } else { Platform.Variable.SetValue('@invalid', 'your preferences are updated'); }
+   } else {
+       // Invalid HTTP method - not post or get
+       Platform.Variable.SetValue('@invalid', 'your preferences are updated');
+   }
    
    function initialise() {
        // Get the NRL_subscribers record for this SubscriberKey
-       try { mySub = mySubs.Rows.Lookup(["email_address"], [subscriberKey])[0];
+       try {
+           mySub = mySubs.Rows.Lookup(["email_address"], [subscriberKey])[0];
        } catch (e) {
-           Platform.Variable.SetValue("@invalid", 1); }}
+           Platform.Variable.SetValue("@invalid", 1);
+       }
+   }
    
    function updatePrefs() {
        try {
            // Update NRL_subscribers table
-           var fields = [ 'newsletter', 'nrl_partners', 'participation', 'SMS',
-               'updated_date','status' ];
+           var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS',
+               'updated_date','status'
+           ];
    
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",
                Request.GetFormField('participation') ? Request.GetFormField('participation') : "0",
                Request.GetFormField('SMS') ? Request.GetFormField('SMS') : "0",
-               Platform.Function.SystemDateToLocalDate(new Date()) ];
+               Platform.Function.SystemDateToLocalDate(new Date())
+           ];
    
            // If Unsub from All Selected add status field to update and execute LogUnsubEvent through API
            if (Request.GetFormField('unsub_all') == "1") {
@@ -131,10 +155,12 @@
            Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
    
            var statusAndRequest = [0, 0];
+   
            Response = Platform.Function.InvokeExecute(lue, statusAndRequest);
        } catch (err) {
            return false;
        }
+   
        return true;
    }
    
@@ -145,12 +171,6 @@
            return '';
        }
    }
-
-   Platform.Variable.SetValue("@addSub",addSub);
-   Platform.Variable.SetValue("@subCount", allSubRows.length)
-   Platform.Variable.SetValue("@environment",environment);
-   Platform.Variable.SetValue("@e",emailAddress);
-   Platform.Variable.SetValue("@hash",e);
    
 </script>
 <html>

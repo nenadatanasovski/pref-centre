@@ -358,7 +358,7 @@
       <div class="content">
          <div class="block-title">
             <h2>
-               NRL Email and SMS Subscription Preferences <br>
+               commmunication Preferences <br>
                environment: %%=v(@environment)=%% <br>
                email: %%=v(@e)=%% <br>
                statusMessage: %%=v(@statusMessage)=%%
@@ -369,11 +369,11 @@
                <tr>
                   <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
                   <td class="name-cell">
-                     <h2>NRL</h2>
+                     <h2>NRL subscriptions for email address: <b>%%=v(@e)=%%</b> </h2>
                   </td>
                </tr>
             </table>
-            <p class="explainer">Select the content you would like to subscribe to for email address: <b>%%=v(@e)=%%</b>.</p>
+            <p class="explainer">Select the content you would like to subscribe to.</p>
             %%[if @invalid != 1 then]%%
             <form role="form" id="new_session" class="card-row" action="" accept-charset="UTF-8" method="post">
                <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%_subscriberkey%%">
@@ -453,7 +453,7 @@
                               <table>
                                  <tr>
                                     <td>
-                                       <p class="explainer">Unsubscribe from all email and SMS subscriptions for email address: <b>%%=v(@e)=%%</b>.</p>
+                                       <p class="explainer">Unsubscribe from all email and SMS subscriptions.</p>
                                        <div class="options">
                                        </div>
                                     <td>
@@ -490,7 +490,7 @@
                   %%[if not empty(@statusMessage) then ]%%
                   <div class="form-row" style="margin-top: 10px">
                      <div class="message success">
-                        <p>Your preferences have been successfully updated for email address: <b>%%=v(@e)=%%</b>.</p>
+                        <p>Your preferences have been successfully updated.</p>
                      </div>
                   </div>
                   %%[endif]%%
@@ -499,7 +499,10 @@
             <form role="form" id="new_session" class="card-row" action="/identity/sessions" accept-charset="UTF-8" method="post">
             <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%=v(@e)=%%">
             <div class="form-row">
-            <label class="form-label" for="mobile_number">Could not update preferences</label>
+            <label class="form-label" for="mobile_number">
+            	We could not update your preferences due to a system error. <br>
+            	Our developer team has been notified and are looking into the issue. <br>
+            	Please try again at a later time.</label>
             </div>
             </form>
             %%[ endif ]%%

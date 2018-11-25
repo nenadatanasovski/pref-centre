@@ -7,8 +7,11 @@ var e = Platform.Request.GetQueryStringParameter('e');
 if (qs == null && e == null) {
   Platform.Response.Redirect('https://pub.s7.exacttarget.com/l3k2j4guogq');
 }
+
 if (!qs == null) {
+  
    var environment = 'emailSend';
+
    var subscriberKey = Attribute.GetValue("_subscriberkey");
    var subscriberId = Attribute.GetValue("subscriberid");
    var emailAddress = Attribute.GetValue("emailaddr");
@@ -34,13 +37,15 @@ var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['Email
    var addSubscriber = {
    "EmailAddress": emailAddress,
    "SubscriberKey": emailAddress
-} var status = Subscriber.Add(addSubscriber);
+}
+var status = Subscriber.Add(addSubscriber);
 }
 
    Platform.Variable.SetValue("@addSub",addSub);
    Platform.Variable.SetValue("@subCount", allSubRows.length)
    Platform.Variable.SetValue("@environment",environment);
    Platform.Variable.SetValue("@e",emailAddress);
+   Platform.Variable.SetValue("@hash",e);
    
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");
@@ -72,6 +77,7 @@ var allSubRows = Platform.Function.LookupRows('parent_level_subscribers',['Email
            var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS',
                'updated_date','status'
            ];
+   
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",

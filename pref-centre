@@ -363,7 +363,11 @@
       margin-top: 1rem;
       }
       footer {
-      margin: 15rem
+      letter-spacing: -0.6px;
+      line-height: 1.333333;
+      border-top: 0.125rem solid rgba(135, 116, 138, 0.08);
+      padding: 2rem;
+      margin: 15rem;
       width:100%;	
 	  }
 	  .footer {

@@ -357,29 +357,28 @@
    <body>
       <div class="content">
          <div class="block-title">
+         	<table>
+         		<tr>
+         			<td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
+         			<td>
             <h2>
-               commmunication Preferences <br>
+               NRL commmunication Preferences <br>
                environment: %%=v(@environment)=%% <br>
                email: %%=v(@e)=%% <br>
                statusMessage: %%=v(@statusMessage)=%%
             </h2>
+        </td>
+        </tr>
+        </table>
          </div>
          <div class="content-wrapper">
-            <table>
-               <tr>
-                  <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
-                  <td class="name-cell">
-                     <h2>NRL</h2>
-                  </td>
-               </tr>
-            </table>
             <table>
                <tr>
                   <td>
                      %%[ IF NOT EMPTY(@statusMessage) THEN ]%%
                            <center>
                            <h2>Updated preferences for <b>%%=v(@e)=%%</b></h2>
-                           <center>
+                           </center>
                      %%[ ENDIF ]%%
                   </td>
                </tr>

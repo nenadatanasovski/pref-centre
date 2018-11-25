@@ -365,7 +365,7 @@
             </h2>
          </div>
          <div class="content-wrapper">
-            <p class="explainer">Select the content you are interested in receiving and manage your email and SMS preferences.</p>
+            <p class="explainer">Select the content you are interested in receiving and manage your email and SMS subscriptions.</p>
             %%[if @invalid != 1 then]%%
             <form role="form" id="new_session" class="card-row" action="" accept-charset="UTF-8" method="post">
                <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%_subscriberkey%%">
@@ -448,6 +448,9 @@
                                     </table>
                                  </tr>
                               </table>
+                              <p class="explainer">Unsubscribe from all email and SMS subscriptions.</p>
+                              <div class="options">
+                              </div>
                               <table>
                                  <tr>
                                     <table>

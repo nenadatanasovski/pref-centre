@@ -248,8 +248,8 @@
       vertical-align: middle;
       }  
       img.bu-icon{
-      height: 2rem;
-      width: 2rem;
+      height: 10rem;
+      width: 10rem;
       } 
       div.preference .options ul {
       margin: 0px;
@@ -439,7 +439,7 @@
          <div class="block-title">
             <table>
                <tr>
-                  <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" width="60" height="60"/></td>
+                  <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon"/></td>
                   <td>
                      <h2>
                         NRL commmunication Preferences <br>

@@ -380,12 +380,12 @@
         </tr>
         </table>
          </div>
-         <div class="content-wrapper">
-         	%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
+         %%[ IF NOT EMPTY(@statusMessage) THEN ]%%
             <div class="action-centre">
                            <h3>Updated preferences for <b>%%=v(@e)=%%</b></h3>
             </div>
                 %%[ ENDIF ]%%
+         <div class="content-wrapper">
             <br>
             <p class="explainer">Select the content you would like to subscribe to.</p>
             %%[if @invalid != 1 then]%%

@@ -461,7 +461,7 @@
                                           <td>
                                              <div class="form-item form-type-option">
                                                 <input type="checkbox" class="" id="Unsubscribed" name="Unsubscribed" value="1" 
-                                                <ctrl:eval>prefChecked('SMS')</ctrl:eval>
+                                                <ctrl:eval>prefChecked('Unsubscribed')</ctrl:eval>
                                                 >
                                                 <label for="Unsubscribed">Unsubscribe from all email marketing communications</label>
                                              </div>

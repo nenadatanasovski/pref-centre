@@ -47,7 +47,7 @@
    var mySubs = DataExtension.Init("NRL_subscribers");
    var mySub = {};
    
-   if (method == 'GET') { initialise(); } else if (method == 'POST') { if (updatePrefs() > 0) { initialise(); }
+   if (method == 'GET') { initialise(); } else if (method == 'POST') { if (updatePrefs() > 0) { initialise();}
    } else {
        // Invalid HTTP method - not post or get
        Platform.Variable.SetValue('@invalid', 'your preferences are updated');

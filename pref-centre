@@ -38,11 +38,6 @@
    var status = Subscriber.Add(addSubscriber);
    }
    
-   Platform.Variable.SetValue("@addSub",addSub);
-   Platform.Variable.SetValue("@subCount", allSubRows.length)
-   Platform.Variable.SetValue("@environment",environment);
-   Platform.Variable.SetValue("@e",emailAddress);
-   Platform.Variable.SetValue("@hash",e);
    var method = Platform.Request.Method();
    var mySubs = DataExtension.Init("NRL_subscribers");
    var mySub = {};
@@ -103,7 +98,6 @@
                Platform.Variable.SetValue("@statusMessage", "your preferences are updated");
                return rows;
            }
-   
        } catch (e) {
            Platform.Variable.SetValue("@invalid", 1);
            return null;
@@ -171,7 +165,10 @@
            return '';
        }
    }
-   
+
+   Platform.Variable.SetValue("@environment",environment);
+   Platform.Variable.SetValue("@e",emailAddress);  
+
 </script>
 <html>
    <head>

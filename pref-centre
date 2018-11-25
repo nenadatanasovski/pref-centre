@@ -363,7 +363,8 @@
       margin-top: 1rem;
       }
       footer {
-      margin: 15rem
+      padding-top:15rem;
+      margin: 15rem;
       width:100%;	
 	  }
 	  .footer {

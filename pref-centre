@@ -386,6 +386,7 @@
             		</td>
             	</tr>
             </table>
+            <br><br>
             <p class="explainer">Select the content you would like to subscribe to.</p>
             %%[if @invalid != 1 then]%%
             <form role="form" id="new_session" class="card-row" action="" accept-charset="UTF-8" method="post">

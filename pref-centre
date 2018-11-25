@@ -60,10 +60,7 @@
    function updatePrefs() {
        try {
            // Update NRL_subscribers table
-           var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS',
-               'updated_date','status'
-           ];
-   
+           var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS','updated_date','status'];
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
                Request.GetFormField('nrl_partners') ? Request.GetFormField('nrl_partners') : "0",

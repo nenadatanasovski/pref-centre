@@ -373,7 +373,7 @@
                   	%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
                   	<div class="form-row" style="margin-top: 10px">
                      <div class="message success">
-                     <h2>Preferences for <b>%%=v(@e)=%%</b>have been successfully updated.</h2>
+                     <h2>Updated preferences for <b>%%=v(@e)=%%</b>.</h2>
                      </div>
                      </div>
                      %%[ ENDIF ]%%

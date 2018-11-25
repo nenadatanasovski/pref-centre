@@ -80,16 +80,24 @@
                return rows;
            }
    
-       } catch (e) { Platform.Variable.SetValue("@invalid", 1);
-           return null;}
+       } catch (e) {
+           Platform.Variable.SetValue("@invalid", 1);
+           return null;
+       }
    }
    
    function resubscribe() {
-       try { var subscriber = { "Status": "Active" };
+       try {
+           var subscriber = {
+               "Status": "Active"
+           };
            var subObj = Subscriber.Init(subscriberKey);
            var status = subObj.Update(subscriber);
            return true;
-       } catch (e) { return false; }}
+       } catch (e) {
+           return false;
+       }
+   }
    
    function logUnsub() {
        // SSJS API Code - long winded. Need to consider new WSProxy for tidier code
@@ -124,12 +132,19 @@
    
            var statusAndRequest = [0, 0];
            Response = Platform.Function.InvokeExecute(lue, statusAndRequest);
-       } catch (err) { return false; }
-       return true; }
+       } catch (err) {
+           return false;
+       }
+       return true;
+   }
    
    function prefChecked(prefName) {
-       if (mySub[prefName]) { return 'checked';
-       } else { return ''; }}
+       if (mySub[prefName]) {
+           return 'checked';
+       } else {
+           return '';
+       }
+   }
 
    Platform.Variable.SetValue("@addSub",addSub);
    Platform.Variable.SetValue("@subCount", allSubRows.length)

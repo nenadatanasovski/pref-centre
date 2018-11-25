@@ -359,7 +359,7 @@
          <div class="block-title">
          	<table>
          		<tr>
-         			<td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
+         			<td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" width="60" height="60"/></td>
          			<td>
             <h2>
                NRL commmunication Preferences <br>

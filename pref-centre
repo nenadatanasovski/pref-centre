@@ -373,7 +373,7 @@
                   </td>
                </tr>
             </table>
-            <p class="explainer">Select the content you are interested in receiving and manage your subscriptions for email address: <bold>%%=v(@e)=%%</bold>.</p>
+            <p class="explainer">Select the content you would like to subscribe to for email address: <h2>%%=v(@e)=%%</h2>.</p>
             %%[if @invalid != 1 then]%%
             <form role="form" id="new_session" class="card-row" action="" accept-charset="UTF-8" method="post">
                <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%_subscriberkey%%">

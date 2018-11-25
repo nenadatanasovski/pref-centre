@@ -369,7 +369,14 @@
                <tr>
                   <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
                   <td class="name-cell">
-                     <h2>NRL subscriptions for email address: <b>%%=v(@e)=%%</b> </h2>
+                  	<h2>NRL</h2>
+                  	%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
+                  	<div class="form-row" style="margin-top: 10px">
+                     <div class="message success">
+                     <h2>Preferences for <b>%%=v(@e)=%%</b>have been successfully updated.</h2>
+                     </div>
+                     </div>
+                     %%[ ENDIF ]%%
                   </td>
                </tr>
             </table>
@@ -487,13 +494,6 @@
                         </p>
                      </div>
                   </div>
-                  %%[if not empty(@statusMessage) then ]%%
-                  <div class="form-row" style="margin-top: 10px">
-                     <div class="message success">
-                        <p>Your preferences have been successfully updated.</p>
-                     </div>
-                  </div>
-                  %%[endif]%%
             </form>
             %%[else]%%
             <form role="form" id="new_session" class="card-row" action="/identity/sessions" accept-charset="UTF-8" method="post">

@@ -363,9 +363,9 @@
       margin-top: 1rem;
       }
       footer {
-      padding-right: 5px;
-      padding-left: 5px;
-      padding-bottom: 5px;	
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px;	
 	  width: 100%
 	  }
       footer .app-links img {
@@ -605,7 +605,6 @@
          </div>
       </div>
       <table>
-      	<tr>
          <footer>
             <div class="home-link">
                <a class="no-style" href="https://www.nrl.com.au/">Home</a>
@@ -636,7 +635,6 @@
                <small>&copy; Copyright %%xtyear%% National Rugby League</small>
             </div>
          </footer>
-     </tr>
      </table>
       <script type="text/javascript">
          var checked = [];

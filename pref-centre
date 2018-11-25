@@ -606,7 +606,6 @@
       </div>
       <table>
       	<tr>
-      		<td>
          <footer>
             <div class="home-link">
                <a class="no-style" href="https://www.nrl.com.au/">Home</a>
@@ -637,8 +636,7 @@
                <small>&copy; Copyright %%xtyear%% National Rugby League</small>
             </div>
          </footer>
-     </td>
- </tr>
+     </tr>
      </table>
       <script type="text/javascript">
          var checked = [];

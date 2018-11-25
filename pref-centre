@@ -83,14 +83,7 @@
            }
    
            var rows = Platform.Function.UpsertData("NRL_subscribers", ["email_address"], [emailAddress], fields, values);
-   
-           if (!rows || rows == 0) {
-               Platform.Variable.SetValue("@invalid", 1);
-               return null;
-           } else {
-               Platform.Variable.SetValue("@statusMessage", "your preferences are updated");
-               return rows;
-           }
+           Platform.Variable.SetValue("@statusMessage", "your preferences are updated");
        } catch (e) {
            Platform.Variable.SetValue("@invalid", 1);
            return null;
@@ -492,9 +485,9 @@
             </form>
             %%[else]%%
             <form role="form" id="new_session" class="card-row" action="/identity/sessions" accept-charset="UTF-8" method="post">
-            <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%=v(@SubscriberKey)=%%">
+            <input type="hidden" name="SubscriberKey" id="SubscriberKey" value="%%=v(@e)=%%">
             <div class="form-row">
-            <label class="form-label" for="mobile_number">Subscription not found</label>
+            <label class="form-label" for="mobile_number">Could not update preferences</label>
             </div>
             </form>
             %%[ endif ]%%

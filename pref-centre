@@ -447,6 +447,8 @@
                                        </tr>
                                     </table>
                                  </tr>
+                                 <br>
+                                 <br>
                               </table>
                               <table>
                                  <tr>
@@ -466,7 +468,7 @@
                                                 <input type="checkbox" class="" id="Unsubscribed" name="Unsubscribed" value="1" 
                                                 <ctrl:eval>prefChecked('Unsubscribed')</ctrl:eval>
                                                 >
-                                                <label for="Unsubscribed">Unsubscribe from all email marketing communications</label>
+                                                <label for="Unsubscribed">Unsubscribe</label>
                                              </div>
                                           </td>
                                        </tr>

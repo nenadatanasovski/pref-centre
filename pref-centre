@@ -42,12 +42,10 @@
    
    if (method == 'GET') { initialise(); } else if (method == 'POST') { if (updatePrefs() > 0) { initialise();}
    } else {
-       // Invalid HTTP method - not post or get
        Platform.Variable.SetValue('@invalid', 'your preferences are updated');
    }
    
    function initialise() {
-       // Get the NRL_subscribers record for this SubscriberKey
        try {
            mySub = mySubs.Rows.Lookup(["email_address"], [subscriberKey])[0];
        } catch (e) {
@@ -57,7 +55,6 @@
    
    function updatePrefs() {
        try {
-           // Update NRL_subscribers table
            var fields = ['newsletter', 'nrl_partners', 'participation', 'SMS','updated_date','status'];
            var values = [
                Request.GetFormField('newsletter') ? Request.GetFormField('newsletter') : "0",
@@ -144,7 +141,6 @@
            Platform.Function.AddObjectArrayItem(lue, "Parameters", lue_prop);
    
            var statusAndRequest = [0, 0];
-   
            Response = Platform.Function.InvokeExecute(lue, statusAndRequest);
        } catch (err) {
            return false;

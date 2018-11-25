@@ -613,8 +613,8 @@
             </div>
             <div class="app-links">
                Get the app for
-               <a><img class="android" alt="Android icon" src="https://image.e.amaysim.com.au/lib/fe941573726c077875/m/1/c26ab4fb-1c1e-4f69-b68b-51db6ab3a1dc.png"  href="https://play.google.com/store/apps/details?id=com.telstra.nrl&hl=en_AU"></a> and
-               <a><img class="apple" alt="Apple icon" src="https://image.e.amaysim.com.au/lib/fe941573726c077875/m/1/b248fc0d-b717-49b6-9316-783f6165037d.png" href="https://itunes.apple.com/au/app/nrl-official-app/id442363523?mt=8"></a>
+               <a href="https://play.google.com/store/apps/details?id=com.telstra.nrl&hl=en_AU"><img class="android" alt="Android icon" src="https://image.e.amaysim.com.au/lib/fe941573726c077875/m/1/c26ab4fb-1c1e-4f69-b68b-51db6ab3a1dc.png"></a> and
+               <a href="https://itunes.apple.com/au/app/nrl-official-app/id442363523?mt=8"><img class="apple" alt="Apple icon" src="https://image.e.amaysim.com.au/lib/fe941573726c077875/m/1/b248fc0d-b717-49b6-9316-783f6165037d.png"></a>
             </div>
             <div class="social-links">
                <a href="https://www.facebook.com/nrl/" target="_blank">

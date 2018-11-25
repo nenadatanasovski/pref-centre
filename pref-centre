@@ -370,15 +370,21 @@
                   <td class="icon-cell"><img src="https://www.nrl.com/client/dist/logos/nrl-badge.svg?1" class="bu-icon" /></td>
                   <td class="name-cell">
                   	<h2>NRL</h2>
-                  	%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
+                  </td>
+               </tr>
+            </table>
+            <table>
+            	<tr>
+            		<td>
+            			%%[ IF NOT EMPTY(@statusMessage) THEN ]%%
                   	<div class="form-row" style="margin-top: 10px">
                      <div class="message success">
                      <h2>Updated preferences for <b>%%=v(@e)=%%</b>.</h2>
                      </div>
                      </div>
                      %%[ ENDIF ]%%
-                  </td>
-               </tr>
+            		</td>
+            	</tr>
             </table>
             <p class="explainer">Select the content you would like to subscribe to.</p>
             %%[if @invalid != 1 then]%%
